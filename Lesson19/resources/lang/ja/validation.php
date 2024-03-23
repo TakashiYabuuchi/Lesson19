@@ -31,7 +31,7 @@ return [
     ],
     'boolean'              => ':attributeには、\'true\'か\'false\'を指定してください。',
     'confirmed'            => ':attributeと:attribute確認が一致しません。',
-    'current_password' => 'パスワードが違います。',// 新規ルール追加
+    'current_password' => 'パスワードが違います。', // 新規ルール追加
     'date'                 => ':attributeは、正しい日付ではありません。',
     'date_equals'          => ':attributeは:dateに等しい日付でなければなりません。',
     'date_format'          => ':attributeの形式は、\':format\'と合いません。',
@@ -92,7 +92,7 @@ return [
         'string'  => ':attributeは、:min文字以上にしてください。',
     ],
     'multiple_of'          => ':attributeは:valueの倍数でなければなりません',
-    'nospace'              => ':attributeは、必ず指定してください。',// 新規ルール追加
+    'nospace'              => ':attributeは、必ず指定してください。', // 新規ルール追加
     'not_in'               => '選択された:attributeは、有効ではありません。',
     'not_regex'            => ':attributeの形式が無効です。',
     'numeric'              => ':attributeには、数字を指定してください。',
@@ -130,13 +130,13 @@ return [
         ],
     ],
     'attributes'           => [
-        'name'=>'名前',
-        'upName'=>'名前',
-        'email'=>'メールアドレス',
-        'password'=>'パスワード',
-        'upPassword'=>'現在のパスワード',
-        'newPassword'=>'新規パスワード',
-        'newPost'=>'投稿',
-        'upPost'=>'投稿',
+        'name' => '名前',
+        'upName' => '名前',
+        'email' => 'メールアドレス',
+        'password' => 'パスワード',
+        'upPassword' => '現在のパスワード',
+        'newPassword' => '新規パスワード',
+        'newPost' => '投稿',
+        'upPost' => '投稿',
     ],
 ];
