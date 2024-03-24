@@ -28,7 +28,7 @@
     @endif
 
     <!-- 提出ボタン -->
-    <button type="submit" class="btn btn-primary pull-right add">更新する</button>
+    {{Form::submit('更新する', ['class'=>'btn btn-primary pull-right add'])}}
     {!! Form::close() !!}
 
     <!-- 前のページに戻るボタン -->
@@ -40,6 +40,16 @@
 
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+  <script type="text/javascript">
+  //更新ボタンを押した際に更新ボタンを無効化（連打による二重送信防止）
+  $(function(){
+	$('[type="submit"]').click(function(){
+	$(this).prop('disabled',true);//ボタン無効化
+	$(this).closest('form').submit();//フォーム送信
+	});
+  });
+  </script>
 </body>
 
 </html>

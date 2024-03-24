@@ -53,6 +53,7 @@ Route::get('/userProfile',[ProfilesController::class,'userProfile']);
 
 // updateProfileForm（ユーザープロファイル編集画面）へのルーティング
 Route::get('/updateProfileForm',[ProfilesController::class,'updateProfileForm']);
+Route::post('/updateProfileForm',[ProfilesController::class,'updateProfileForm']);
 
 // updateProfile（ユーザープロファイル編集処理）へのルーティング
 Route::post('/profile/update',[ProfilesController::class,'updateProfile']);

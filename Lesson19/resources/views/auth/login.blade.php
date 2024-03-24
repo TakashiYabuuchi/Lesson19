@@ -58,7 +58,7 @@
 
                         <div class="row mb-0">
                             <div class="col-md-8 ">
-                                <button type="submit" class="btn btn-primary mb-2">
+                                <button type="submit" class="btn btn-primary mb-2" id="form1">
                                     {{ __('ログイン') }}
                                 </button>
 
@@ -84,4 +84,17 @@
         </div>
     </div>
 </div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+//ログインボタンを押した際にログインボタンを無効化（連打による二重送信回避）
+$(function(){
+$('[id="form1"]').click(function(){
+$(this).prop('disabled',true);//ボタン無効化
+$(this).closest('form').submit();//フォーム送信
+});
+});
+</script>
+
 @endsection

@@ -39,9 +39,10 @@ class ProfilesController extends Controller
 
 
     // updateProfileFormメソッド（ログインユーザーのプロフィール編集画面表示）
-    public function updateProfileForm()
+    public function updateProfileForm(Request $request)
     {
-        return view('profiles.updateProfileForm'); // ビューファイルupdateProfileForm.blade.php呼び出し
+        $password_form=$request->input('passwordForm');
+        return view ('profiles.updateProfileForm',['password_form'=>$password_form]);// ビューファイルupdateProfileForm.blade.php呼び出し
     }
 
 
@@ -224,4 +225,11 @@ class ProfilesController extends Controller
             ->count();
         return view('profiles.memberProfile', ['member_profiles' => $member_profile, 'member_posts' => $member_post, 'number_following' => $number_following, 'number_followed' => $number_followed]); // ビューファイルmemberProfile.blade.php呼び出し
     }
+
+    // 認証機能追加
+    public function __construct()
+    {
+    $this->middleware('auth');
+    }
+
 }

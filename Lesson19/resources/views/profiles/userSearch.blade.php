@@ -42,13 +42,13 @@
           @if ($my_follows->contains('followed_user_id',$user_list->id))
           {{Form::open(['url' => '/removeFollow'])}}
           {{Form::hidden('removeFollow',$user_list->id)}}
-          {{Form::submit('フォロー中' ,['class' => 'btn btn-primary'])}}
+          {{Form::submit('フォロー中' ,['class' => 'btn btn-primary','id'=>'follow'])}}
           {{Form::close()}}
           @else
           <!-- ログインユーザーがフォローしていない場合、フォローボタンを表示 -->
           {{Form::open(['url' => '/addFollow'])}}
           {{Form::hidden('addFollow',$user_list->id)}}
-          {{Form::submit('フォローする',['class' => 'btn btn-primary cancel'])}}
+          {{Form::submit('フォローする',['class' => 'btn btn-primary cancel','id'=>'follow'])}}
           {{Form::close()}}
           @endif
           @endif
@@ -70,6 +70,15 @@
 
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+    //フォロー/フォロー中ボタンを押した際にボタンを無効化（連打による二重送信回避）
+    $(function(){
+	  $('[id="follow"]').click(function(){
+		$(this).prop('disabled',true);//ボタン無効化
+		$(this).closest('form').submit();//フォーム送信
+	  });
+    });
+    </script>
 </body>
 
 </html>

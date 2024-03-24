@@ -63,7 +63,7 @@
 
                         <div class="row mb-0">
                             <div class=" memory">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary" id="form1">
                                     {{ __('Register') }}
                                 </button>
                             </div>
@@ -83,4 +83,17 @@
         </div>
     </div>
 </div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+//アカウント作成ボタンを押した際にアカウント作成ボタンを無効化（連打による二重送信回避）
+$(function(){
+$('[id="form1"]').click(function(){
+$(this).prop('disabled',true);//ボタン無効化
+$(this).closest('form').submit();//フォーム送信
+});
+});
+</script>
+
 @endsection

@@ -63,7 +63,7 @@
             <!-- 削除ボタン -->
             {!! Form::open(['url' => '/post/delete']) !!}
             {!! Form::hidden('id', $list->id) !!}
-            <button type="submit" class="btn btn-danger" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')">削除</button>
+            <button type="submit" class="btn btn-danger" id="delete">削除</button>
             {!! Form::close() !!}
           </div>
         </td>
@@ -105,6 +105,20 @@
   </div>
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
+  <script type="text/javascript">
+  //投稿削除ボタンを押した際に投稿削除ボタンを無効化（連打による二重送信防止）
+  $(function(){
+	$('[id="delete"]').click(function(){
+  if(window.confirm('こちらの投稿を削除してもよろしいでしょうか？')){
+  $(this).prop('disabled',true);//ボタン無効化
+  $(this).closest('form').submit();//フォーム送信
+  } else {
+  $(this).prop('disabled',false);//ボタン無効化解除
+  return false;// 処理中断
+  }
+  });
+  });
+  </script>
 
 </body>
 

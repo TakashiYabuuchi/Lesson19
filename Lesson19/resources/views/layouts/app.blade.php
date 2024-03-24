@@ -43,62 +43,62 @@
                         <!-- 投稿一覧表示時 -->
                         <li class="nav-item">
                             @if (Request::is('index'))
-                            <h2>Home</h2>
+                            <h2>トップ</h2>
                             @endif
                         </li>
 
                         <li class="nav-item">
                             @if (Request::is('/'))
-                            <h2>Home</h2>
+                            <h2>トップ</h2>
                             @endif
                         </li>
 
                         <!-- 新規投稿 -->
                         <li class="nav-item">
                             @if (Request::is('create-form'))
-                            <h2>Post</h2>
+                            <h2>投稿</h2>
                             @endif
                         </li>
 
                         <!-- 投稿編集 -->
                         <li class="nav-item">
                             @if (Request::is('post/*/update-form'))
-                            <h2>Edit Post</h2>
+                            <h2>投稿編集</h2>
                             @endif
                         </li>
 
                         <!-- プロフィール -->
                         <li class="nav-item">
                             @if (Request::is('userProfile'))
-                            <h2>Profile</h2>
+                            <h2>ユーザープロフィール</h2>
                             @endif
                         </li>
 
                         <!-- プロフィール編集 -->
                         <li class="nav-item">
                             @if (Request::is('updateProfileForm'))
-                            <h2>Edit Profile</h2>
+                            <h2>プロフィール編集</h2>
                             @endif
                         </li>
 
                         <!-- フォローリスト -->
                         <li class="nav-item">
                             @if (Request::is('followingList'))
-                            <h2>Following List</h2>
+                            <h2>フォローリスト</h2>
                             @endif
                         </li>
 
                         <!-- フォロワーリスト -->
                         <li class="nav-item">
                             @if (Request::is('followedList'))
-                            <h2>Followed List</h2>
+                            <h2>フォロワーリスト</h2>
                             @endif
                         </li>
 
                         <!-- ユーザー検索 -->
                         <li class="nav-item">
                             @if (Request::is('userSearch'))
-                            <h2>User Searching</h2>
+                            <h2>ユーザー検索</h2>
                             @endif
                         </li>
 
@@ -110,7 +110,7 @@
                         {!! Form::open(['url' => '/index']) !!}
                         {!! Form::input('text', 'postSearch', null, ['placeholder' => '投稿検索']) !!}
                         <!-- 検索ボタン -->
-                        <button type="submit" name="search" class="fas fa-search">検索</button>
+                        <button type="submit" name="search" class="fas fa-search" id="search">検索</button>
                         {!! Form::close() !!}
                     </div>
                     @endif
@@ -121,10 +121,23 @@
                         {!! Form::open(['url' => '/userSearch']) !!}
                         {!! Form::input('text', 'userSearch', null, ['placeholder' => 'ユーザー検索']) !!}
                         <!-- 検索ボタン -->
-                        <button type="submit" name="search" class="fas fa-search">検索</button>
+                        <button type="submit" name="search" class="fas fa-search" id="search">検索</button>
                         {!! Form::close() !!}
                     </div>
                     @endif
+
+                    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+                    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+                    <script type="text/javascript">
+                    //検索ボタンを押した際に検索ボタンを無効化（連打による二重送信回避）
+                    $(function(){
+                    $('[id="search"]').click(function(){
+                    $(this).prop('disabled',true);//ボタン無効化
+                    $(this).closest('form').submit();//フォーム送信
+                    });
+                    });
+                    </script>
 
 
 
