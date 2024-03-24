@@ -25,9 +25,9 @@
         <!-- フォロー数・フォロワー数を表示 -->
         <table class='table table-hover pf-1'>
           <tr>
-            <th>Name</th>
-            <th>Following</th>
-            <th>Followed</th>
+            <th>名前</th>
+            <th>フォロー</th>
+            <th>フォロワー</th>
           </tr>
 
           <tr>
@@ -50,7 +50,7 @@
     </div>
 
     <!-- ユーザーの投稿データを表示 -->
-    <h2 class='page-header'>Posts</h2>
+    <h2 class='page-header'>投稿</h2>
     <table class='table table-hover'>
 
       @foreach ($user_posts as $user_post)

@@ -15,7 +15,7 @@
   <div class='container'>
 
     <!-- 投稿編集フォーム -->
-    <h2 class='page-header'>Contents</h2>
+    <h2 class='page-header'>投稿内容</h2>
     {!! Form::open(['url' => '/post/update']) !!}
     <div class="form-group">
       {!! Form::hidden('id', $post->id) !!}

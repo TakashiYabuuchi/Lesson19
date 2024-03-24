@@ -29,9 +29,9 @@
       <div class="profile-right">
         <table class='table table-hover pf-1'>
           <tr>
-            <th>Name</th>
-            <th>Following</th>
-            <th>Followed</th>
+            <th>名前</th>
+            <th>フォロー</th>
+            <th>フォロワー</th>
           </tr>
 
           <tr>
@@ -52,7 +52,7 @@
       @endforeach
     </div>
 
-    <h2 class='page-header'>Posts</h2>
+    <h2 class='page-header'>投稿</h2>
     <table class='table table-hover'>
 
       @foreach ($member_posts as $member_post)

@@ -14,7 +14,7 @@
   <div class='container'>
 
     <!-- 投稿フォーム -->
-    <h2 class='page-header'>Contents</h2>
+    <h2 class='page-header'>投稿内容</h2>
     {!! Form::open(['url' => 'post/create']) !!}
     <div class="form-group">
       {!! Form::input('text', 'newPost', null, ['required', 'class' => 'form-control', 'placeholder' => '投稿内容']) !!}
