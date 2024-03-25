@@ -39,7 +39,7 @@
 
         <div class="ed-icon">
           <label for="file" class="col-md-4 col-form-label">アイコン
-            （アップロード可能：.jpg , .jpeg , .png）
+            （アップロード可能：.jpg , .jpeg , .png 1024KBまで）
           </label>
           <img src="{{asset('/storage/'.\Auth::user()->image_path)}}" alt="" width="30" height="20">
 

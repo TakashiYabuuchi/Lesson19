@@ -43,13 +43,13 @@
                         <!-- 投稿一覧表示時 -->
                         <li class="nav-item">
                             @if (Request::is('index'))
-                            <h2>トップ</h2>
+                            <h2>ホーム</h2>
                             @endif
                         </li>
 
                         <li class="nav-item">
                             @if (Request::is('/'))
-                            <h2>トップ</h2>
+                            <h2>ホーム</h2>
                             @endif
                         </li>
 

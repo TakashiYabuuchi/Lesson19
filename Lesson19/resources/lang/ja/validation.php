@@ -138,5 +138,6 @@ return [
         'newPassword' => '新規パスワード',
         'newPost' => '投稿',
         'upPost' => '投稿',
+        'upIcon' =>'アイコン',// 追加
     ],
 ];

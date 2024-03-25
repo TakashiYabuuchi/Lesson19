@@ -64,7 +64,7 @@ class ProfilesController extends Controller
                 'upName' => [Rule::unique('users', 'name')->whereNot('id', $user), 'required', 'string', 'nospace', 'max:10'],
                 'upBio' => 'nullable',
                 'upPassword' => 'required|CurrentPassword',
-                'upIcon' => 'nullable',
+                'upIcon' => 'nullable|max:1024',
                 'newPassword' => 'confirmed|min:6|nospace|nullable',
             ],
             [ // エラーメッセージ
