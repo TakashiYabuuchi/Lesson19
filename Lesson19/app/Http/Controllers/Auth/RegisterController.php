@@ -57,9 +57,9 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255','nospace','unique:users'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:6', 'confirmed'],// パスワード最小6文字に変更
+            'name' => ['required', 'string', 'max:12','nospace','unique:users'],// 名前最大12文字に変更
+            'email' => ['required', 'string', 'email', 'max:12', 'unique:users'],// メールアドレス最大12文字に変更
+            'password' => ['required', 'string', 'min:6', 'max:12', 'confirmed'],// パスワード最小6文字・最大12文字に変更
         ]);
     }
 

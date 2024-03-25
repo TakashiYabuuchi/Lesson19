@@ -32,9 +32,9 @@
 
       {!! Form::open(['url' => '/profile/update' , 'method' => 'POST', 'enctype' => 'multipart/form-data' , 'file' => 'true']) !!}
       <div class="form-group col-md-12">
-        <label for="text" class="col-md-4 col-form-label ">名前 (※)</label>
+        <label for="text" class="col-md-4 col-form-label ">名前（12文字まで） (※)</label>
         {!! Form::input('text', 'upName', \Auth::user()->name, ['class' => 'form-control ed-item', 'placeholder' => '名前' ]) !!}
-        <label for="text" class="col-md-4 col-form-label">自己紹介</label>
+        <label for="text" class="col-md-4 col-form-label">自己紹介（100文字まで）</label>
         {!! Form::input('text', 'upBio', \Auth::user()->bio, ['class' => 'form-control ed-item', 'placeholder' => '自己紹介文']) !!}
 
         <div class="ed-icon">
@@ -58,7 +58,7 @@
 
         <!-- 「パスワードを変更する」ボタンが押されている場合、新規パスワード入力フォームと確認フォームが表示される -->
         @if(!empty($password_form))
-        <label for="password" class="col-md-4 col-form-label">新規パスワード(※)</label>
+        <label for="password" class="col-md-4 col-form-label">新規パスワード（6文字以上12文字まで）(※)</label>
         {!! Form::input('password','newPassword', null, ['class' => 'form-control ed-item', 'placeholder' => '新しいパスワード']) !!}
         <label for="password" class="col-md-4 col-form-label">新規パスワード確認(※)</label>
         {!! Form::input('password','newPassword_confirmation', null, ['class' => 'form-control ed-item', 'placeholder' => '新しいパスワード（確認）']) !!}

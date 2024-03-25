@@ -61,16 +61,16 @@ class ProfilesController extends Controller
         // バリデーション
         $validated = $request->validate(
             [
-                'upName' => [Rule::unique('users', 'name')->whereNot('id', $user), 'required', 'string', 'nospace', 'max:10'],
-                'upBio' => 'nullable',
+                'upName' => [Rule::unique('users', 'name')->whereNot('id', $user), 'required', 'string', 'nospace', 'max:12'],
+                'upBio' => 'nullable|max:100',
                 'upPassword' => 'required|CurrentPassword',
                 'upIcon' => 'nullable|max:1024',
-                'newPassword' => 'confirmed|min:6|nospace|nullable',
+                'newPassword' => 'confirmed|min:6|max:12|nospace',
             ],
             [ // エラーメッセージ
                 'upName.string' => '名前はスペースのみでは登録できません。',
                 'upName.nospace' => '名前はスペースのみでは登録できません。',
-                'upName.max' => '登録可能な名前は10文字までです。',
+                'upName.max' => '登録可能な名前は12文字までです。',
                 'upBio.max' => '投稿可能な自己紹介文は100文字までです。'
             ]
         );
