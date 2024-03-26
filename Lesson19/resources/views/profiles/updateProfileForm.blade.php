@@ -67,8 +67,12 @@
       </div>
       <p>※：入力必須</p>
       <!-- エラーメッセージ表示 -->
-      @if ($errors->first())
-      <p class="validation">{{$errors->first()}}</p>
+      @if(count($errors) > 0)
+      <ul>
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+      </ul>
       @endif
 
       <!-- 提出ボタン -->

@@ -63,15 +63,16 @@ class ProfilesController extends Controller
             [
                 'upName' => [Rule::unique('users', 'name')->whereNot('id', $user), 'required', 'string', 'nospace', 'max:12'],
                 'upBio' => 'nullable|max:100',
-                'upPassword' => 'required|CurrentPassword',
                 'upIcon' => 'nullable|max:1024',
+                'upPassword' => 'required|CurrentPassword',
                 'newPassword' => 'confirmed|min:6|max:12|nospace',
             ],
             [ // エラーメッセージ
                 'upName.string' => '名前はスペースのみでは登録できません。',
                 'upName.nospace' => '名前はスペースのみでは登録できません。',
                 'upName.max' => '登録可能な名前は12文字までです。',
-                'upBio.max' => '投稿可能な自己紹介文は100文字までです。'
+                'upIcon' => 'アイコンには、1024 KB以下のファイルを指定してください。',
+                'upBio.max' => '登録可能な自己紹介は100文字までです。'
             ]
         );
         //自己紹介文と2テーブルのユーザー名を更新
