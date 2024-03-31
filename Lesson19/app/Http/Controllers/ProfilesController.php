@@ -103,7 +103,7 @@ class ProfilesController extends Controller
         // ファイルがアップロードされている場合、アップロードされた画像をアイコンに設定
         if (isset($up_image)) {
             $image_name = $up_image->getClientOriginalName();
-            $image_path = $request->file('upIcon')->storeAs('', $user.'.png', 'public'); // 入力されたファイルを取得し、ユーザーidをつけてpngファイルとしてpublicに格納
+            $image_path = $request->file('upIcon')->storeAs('', $user, 'public'); // 入力されたファイルを取得し、ユーザーid名をつけてpublicに格納
             DB::table('users')
                 ->where('id', $user)
                 ->update([
