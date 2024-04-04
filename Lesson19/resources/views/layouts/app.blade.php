@@ -7,6 +7,8 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <!-- キャッシュ制御 -->
+    {{header('Cache-control: no-store','Pragma: no-cache');}}
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 

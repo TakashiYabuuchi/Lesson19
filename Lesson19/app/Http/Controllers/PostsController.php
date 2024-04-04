@@ -59,6 +59,8 @@ class PostsController extends Controller
     'user_name'=>$user_name,
     'contents'=>$post
     ]);
+    $request->session()->regenerateToken();
+    // ブラウザバックによる二重投稿対策
     return redirect('/index');// /indexへ遷移
     }
 
@@ -99,6 +101,7 @@ class PostsController extends Controller
     ->update(
     ['contents'=>$up_post]
     );
+    $request->session()->regenerateToken();// ブラウザバックによる二重投稿対策
     return redirect('/index');// /indexへ遷移
     }
 

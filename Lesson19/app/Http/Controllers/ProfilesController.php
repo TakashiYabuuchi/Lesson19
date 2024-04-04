@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 
 
-
 class ProfilesController extends Controller
 {
     // userProfileメソッド（ログインユーザーのプロフィール画面表示）
@@ -63,7 +62,7 @@ class ProfilesController extends Controller
             [
                 'upName' => [Rule::unique('users', 'name')->whereNot('id', $user), 'required', 'string', 'nospace', 'max:12'],
                 'upBio' => 'nullable|max:100',
-                'upIcon' => 'nullable|max:1024',
+                'upIcon' => 'nullable|max:1024|mimes:jpg,jpeg,png',
                 'upPassword' => 'required|CurrentPassword',
                 'newPassword' => 'confirmed|min:6|max:12|nospace',
             ],
@@ -121,6 +120,7 @@ class ProfilesController extends Controller
                 ]);
         }
 
+        $request->session()->regenerateToken();// ブラウザバックによる二重投稿対策
         return redirect('/userProfile'); // /userProfileへ遷移
     }
 
