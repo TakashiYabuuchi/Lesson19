@@ -7,6 +7,7 @@
   <meta charset='utf-8"'>
   <link rel='stylesheet' href='/css/app.css'>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
 </head>
 
 <body>
@@ -33,7 +34,7 @@
       <tr class="user-lists">
         <td class="user-icon"><img src="{{asset('/storage/'.$user_list->image_path)}}" alt="" width="30" height="20"></td>
 
-        <td class="lt-name"><a href="/memberProfile/{{$user_list->id}}">{{ $user_list->name }}</a></td>
+        <td class="lt-name" id="user"><a href="/memberProfile/{{$user_list->id}}">{{ $user_list->name }}</a></td>
 
         <td class="lt-button">
           <!-- ログインユーザー以外のユーザーにフォロー/フォロー解除ボタンを表示 -->
@@ -77,6 +78,21 @@
 		$(this).prop('disabled',true);//ボタン無効化
 		$(this).closest('form').submit();//フォーム送信
 	  });
+    });
+
+    $(function(){
+	  $('[id="follow"]').click(function(){
+		$(this).prop('disabled',true);//ボタン無効化
+		$(this).closest('form').submit();//フォーム送信
+	  });
+    });
+
+    // ブラウザバック対策
+    $(function(){
+    history.pushState(null, null, null);
+    $(window).on("popstate", function (event) {
+      history.pushState(null, null, null);
+    });
     });
     </script>
 </body>

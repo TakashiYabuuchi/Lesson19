@@ -10,6 +10,8 @@
   <meta charset='utf-8"'>
   <link rel='stylesheet' href="{{ asset('/css/app.css') }}">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <!-- キャッシュ制御 -->
+
 </head>
 
 <body>
@@ -118,6 +120,14 @@
   }
   });
   });
+
+  // ブラウザバック対策
+$(function(){
+ history.pushState(null, null, null);
+ $(window).on("popstate", function (event) {
+   history.pushState(null, null, null);
+ });
+});
   </script>
 
 </body>

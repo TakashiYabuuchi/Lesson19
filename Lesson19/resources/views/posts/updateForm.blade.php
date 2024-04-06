@@ -9,6 +9,8 @@
   <meta charset='utf-8"'>
   <link rel='stylesheet' href='/css/app.css'>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <!-- キャッシュ制御 -->
+
 </head>
 
 <body>
@@ -47,8 +49,16 @@
 	$('[type="submit"]').click(function(){
 	$(this).prop('disabled',true);//ボタン無効化
 	$(this).closest('form').submit();//フォーム送信
+  $(this).closest('form').hide().trigger("reset");
 	});
   });
+
+  // ブラウザバック時に登録ボタンを無効化（ブラウザバックによる二重送信防止）
+  $(document).ready(function () {
+    if (window.performance.navigation.type == 2) {
+        $('[type="submit"]').prop('disabled',true);
+    }
+});
   </script>
 </body>
 

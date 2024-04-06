@@ -85,7 +85,8 @@ Route::get('/followedList',[ProfilesController::class,'followedList']);
 Auth::routes();
 
 // registerSuccess（新規登録完了画面）へのルーティング
-Route::get('registerSuccess', [PostsController::class,'registerSuccess']);
+Route::get('registerSuccess', [PostsController::class,'registerSuccess'])->middleware('web');
+
 
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

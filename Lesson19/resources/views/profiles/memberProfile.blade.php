@@ -7,6 +7,8 @@
   <meta charset='utf-8"'>
   <link rel='stylesheet' href='/css/app.css'>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- キャッシュ制御 -->
+  {{header('Cache-control: no-store','Pragma: no-cache');}}
 </head>
 
 <body>
@@ -91,7 +93,7 @@
     <!-- ユーザー検索画面ボタン -->
     <p><a class="btn btn-primary cancel" href="/userSearch">戻る</a></p>
     @else
-    <!-- 前のページに戻るボタン -->
+    <!-- ユーザー検索画面に戻るボタン -->
     <p><button class="btn btn-primary cancel" onClick="history.back();">戻る</button></p>
     @endif
     <!-- トップページに戻るボタン -->
@@ -113,6 +115,8 @@
   }
   });
   });
+
+
   </script>
 </body>
 

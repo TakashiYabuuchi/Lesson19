@@ -7,6 +7,8 @@
   <meta charset='utf-8"'>
   <link rel='stylesheet' href='/css/app.css'>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- キャッシュ制御 -->
+  {{header('Cache-control: no-store','Pragma: no-cache');}}
 </head>
 
 <body>

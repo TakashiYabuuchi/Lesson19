@@ -2,6 +2,8 @@
 @section('content')
 <!DOCTYPE html>
 <html>
+   <!-- キャッシュ制御 -->
+  {{header('Cache-control: no-store','Pragma: no-cache');}}
 <body>
 
   <div class="row mb-0">

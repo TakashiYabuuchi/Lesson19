@@ -7,6 +7,8 @@
   <meta charset='utf-8"'>
   <link rel='stylesheet' href='/css/app.css'>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <!-- キャッシュ制御 -->
+  {{header('Cache-control: no-store','Pragma: no-cache');}}
 </head>
 
 <body>
@@ -17,19 +19,10 @@
     <!-- <a class="btn btn-primary" href="/userProfile">プロフィールに戻る</a></td>
     </div> -->
 
-    <!-- 新規パスワードフォーム表示/非表示ボタン -->
-    @if(empty($password_form))
-    {{Form::hidden('passwordForm',1, ['form' => 'form2'])}}
-    {{Form::submit('パスワードを変更する',['form' => 'form2'])}}
-    @else
-    {{Form::hidden('passwordForm',null, ['form' => 'form2'])}}
-    {{Form::submit('パスワードを変更しない',['form' => 'form2'])}}
-    @endif
+     <button id="show_form">パスワードを変更する</button>
+     <button id="hide_form" style = 'display:none'>パスワードを変更しない</button>
 
     <div class="row mb-3">
-    {!! Form::open(['url' => '/updateProfileForm', 'method' => 'post', 'id' => 'form2']) !!}
-    {!! Form::close() !!}
-
       {!! Form::open(['url' => '/profile/update' , 'method' => 'POST', 'enctype' => 'multipart/form-data' , 'file' => 'true']) !!}
       <div class="form-group col-md-12">
         <label for="text" class="col-md-4 col-form-label ">名前（12文字まで） (※)</label>
@@ -57,14 +50,15 @@
         {!! Form::input('password','upPassword', null, ['class' => 'form-control ed-item', 'placeholder' => '現在のパスワード']) !!}
 
         <!-- 「パスワードを変更する」ボタンが押されている場合、新規パスワード入力フォームと確認フォームが表示される -->
-        @if(!empty($password_form))
-        <label for="password" class="col-md-4 col-form-label">新規パスワード（6文字以上12文字まで）(※)</label>
-        {!! Form::input('password','newPassword', null, ['class' => 'form-control ed-item', 'placeholder' => '新しいパスワード']) !!}
-        <label for="password" class="col-md-4 col-form-label">新規パスワード確認(※)</label>
-        {!! Form::input('password','newPassword_confirmation', null, ['class' => 'form-control ed-item', 'placeholder' => '新しいパスワード（確認）']) !!}
-        @endif
-
+        <div id="password_form" style = 'display:none'>
+        <label for="password" class="col-md-4 col-form-label" id="password_form">新規パスワード（6文字以上12文字まで）(※)</label>
+        {!! Form::input('password','newPassword', null, ['class' => 'form-control ed-item', 'placeholder' => '新しいパスワード','id'=>'password_form', 'disabled' => 'true']) !!}
+        <label for="password" class="col-md-4 col-form-label" id="password_form">新規パスワード確認(※)</label>
+        {!! Form::input('password','newPassword_confirmation', null, ['class' => 'form-control ed-item', 'placeholder' => '新しいパスワード（確認）','id'=>'password_form','disabled' => 'true']) !!}
       </div>
+      </div>
+
+
       <p>※：入力必須</p>
       <!-- エラーメッセージ表示 -->
       @if(count($errors) > 0)
@@ -80,8 +74,8 @@
       {!! Form::close() !!}
     </div>
 
-    <!-- 前のページに戻るボタン -->
-    <p><button class="btn btn-primary cancel" onClick="history.back();">戻る</button></p>
+    <!-- 戻るボタン -->
+    <p><button type="button" class="btn btn-primary cancel" onClick="history.back()">戻る</button></p>
 
     <!-- トップページに戻るボタン -->
     <p><a class="btn btn-primary cancel" href="/index">ホームに戻る</a></p>
@@ -89,7 +83,26 @@
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
     <script type="text/javascript">
+     $(function(){
+    //「パスワードを変更する」ボタンを押すと、新規パスワードフォーム表示
+    $('[id="show_form"]').on("click",function(){
+        $('[id="password_form"]').show().prop('disabled',false);
+        $('[id="show_form"]').hide();
+        $('[id="hide_form"]').show();
+      });//
+      });
+
+      $(function(){
+    //「パスワードを変更しない」ボタンを押すと、新規パスワードフォーム非表示
+    $('[id="hide_form"]').on("click",function(){
+        $('[id="password_form"]').hide().prop('disabled',true);
+        $('[id="show_form"]').show();
+        $('[id="hide_form"]').hide();
+      });//
+      });
+
     //登録ボタンを押した際に登録ボタンを無効化（連打による二重送信回避）
     $(function(){
 	  $('[id="form1"]').click(function(){
@@ -97,6 +110,13 @@
 		$(this).closest('form').submit();//フォーム送信
 	  });
     });
+
+    // ブラウザバック時に登録ボタンを無効化（ブラウザバックによる二重送信防止）
+    $(document).ready(function () {
+    if (window.performance.navigation.type == 2) {
+        $('[id="form1"]').prop('disabled',true);
+    }
+});
     </script>
 </body>
 

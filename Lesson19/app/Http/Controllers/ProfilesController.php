@@ -40,8 +40,7 @@ class ProfilesController extends Controller
     // updateProfileFormメソッド（ログインユーザーのプロフィール編集画面表示）
     public function updateProfileForm(Request $request)
     {
-        $password_form=$request->input('passwordForm');
-        return view ('profiles.updateProfileForm',['password_form'=>$password_form]);// ビューファイルupdateProfileForm.blade.php呼び出し
+        return view ('profiles.updateProfileForm');// ビューファイルupdateProfileForm.blade.php呼び出し
     }
 
 
@@ -120,7 +119,6 @@ class ProfilesController extends Controller
                 ]);
         }
 
-        $request->session()->regenerateToken();// ブラウザバックによる二重投稿対策
         return redirect('/userProfile'); // /userProfileへ遷移
     }
 
